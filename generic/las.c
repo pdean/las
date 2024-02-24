@@ -260,21 +260,21 @@ LasCmd (ClientData data, Tcl_Interp * interp, int objc,
             // read a point
             if (laszip_read_point (laszip_reader))
               {
-                sprintf (buf, "DLL ERROR: reading point %I64d", p_count);
+                sprintf (buf, "DLL ERROR: reading point %ld", p_count);
                 Tcl_AppendResult (interp, buf, NULL);
                 return TCL_ERROR;
               }
             // copy the point
             if (laszip_set_point (laszip_writer, laspoint))
               {
-                sprintf (buf, "DLL ERROR: setting point %I64d", p_count);
+                sprintf (buf, "DLL ERROR: setting point %ld", p_count);
                 Tcl_AppendResult (interp, buf, NULL);
                 return TCL_ERROR;
               }
             // get coords and transform
             if (laszip_get_coordinates (laszip_reader, coordinates))
               {
-                sprintf (buf, "DLL ERROR: getting coords of point %I64d",
+                sprintf (buf, "DLL ERROR: getting coords of point %ld",
                          p_count);
                 Tcl_AppendResult (interp, buf, NULL);
                 return TCL_ERROR;
@@ -294,7 +294,7 @@ LasCmd (ClientData data, Tcl_Interp * interp, int objc,
             if (laszip_set_coordinates (laszip_writer, coordinates))
               {
                 sprintf (buf,
-                         "DLL ERROR: setting coordinates for point %I64d",
+                         "DLL ERROR: setting coordinates for point %ld",
                          p_count);
                 Tcl_AppendResult (interp, buf, NULL);
                 return TCL_ERROR;
@@ -302,14 +302,14 @@ LasCmd (ClientData data, Tcl_Interp * interp, int objc,
             // write the point
             if (laszip_write_point (laszip_writer))
               {
-                sprintf (buf, "DLL ERROR: writing point %I64d", p_count);
+                sprintf (buf, "DLL ERROR: writing point %ld", p_count);
                 Tcl_AppendResult (interp, buf, NULL);
                 return TCL_ERROR;
               }
 
             if (laszip_update_inventory (laszip_writer))
               {
-                sprintf (buf, "DLL ERROR: updating inventory for point %I64d",
+                sprintf (buf, "DLL ERROR: updating inventory for point %ld",
                          p_count);
                 Tcl_AppendResult (interp, buf, NULL);
                 return TCL_ERROR;
@@ -346,7 +346,7 @@ LasCmd (ClientData data, Tcl_Interp * interp, int objc,
             return TCL_ERROR;
           }
           
-           fprintf(stderr,"total time: %g sec for reading %scompressed and writing %scompressed %I64d points\n", 
+           fprintf(stderr,"total time: %g sec for reading %scompressed and writing %scompressed %ld points\n", 
                 taketime()-start_time, (is_compressed ? "" : "un"), (compress ? "" : "un"), npoints);
           
 
