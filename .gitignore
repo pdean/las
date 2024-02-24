@@ -1,0 +1,10 @@
+autom4te.cache/
+Makefile
+config.log
+config.status
+pkgIndex.tcl
+*.so
+*.o
+*~
+*.dll
+*.uuid
